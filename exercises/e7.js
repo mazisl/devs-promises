@@ -19,9 +19,17 @@
  *          }
  */
 
-export function parsePromised() {
+export function parsePromised(json_string) {
   // Your code goes here...
-
+  return new Promise((resolve, reject) => {
+    try {
+      const data = JSON.parse(json_string)     
+      resolve(data)
+    } catch(err) {
+      console.log(err)
+      reject(err)
+    }
+  })
 }
 
 
@@ -32,9 +40,9 @@ export function parsePromised() {
  * * logs the message property of the error object
  */
 
-export function onReject() {
+export function onReject(err) {
   // Your code goes here...
-
+  console.log(err.message);
 }
 
 /**
@@ -49,10 +57,23 @@ export function onReject() {
  * Example: export const promiseHandler = () => return <your code> 
  */
 
-export const handlePromise = () => {
+export const handlePromise = (cbPromise) => {
   // Your code goes here...
+  // const promise = new Promise((resolve, reject) => {
+  //   resolve('promise resolved!');
+  //   reject('promise rejected');
+  // })
+  
+  return cbPromise
+    .then((data) => data)
+    .catch((reason) => {
+      if (reason.message) {
+       return onReject(reason)
+      } else {
+        return reason
+      }
+    })
 }
-
 
 
 

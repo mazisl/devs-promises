@@ -14,9 +14,17 @@
  * * getPromise(num) function must be exported
  * Example: export const getPromise(num) => return <Your code of promise>
 */ 
-export const getPromise = () => {
+export const getPromise = (arg) => {
   // Your code goes here...
+  if (!Number.isInteger(arg)) {
+    return 0;
 
+  } else {
+
+    return new Promise((resolve, reject) => resolve(arg));
+
+    
+  }
 };
 
 
@@ -33,10 +41,35 @@ export const getPromise = () => {
  * * Returns the sum value
  * * if you have solved it successfully, the updateSumValue() function will return the value of 10;
 */
-export const  updateSumValue = () => {
+export const updateSumValue = () => {
   // Your code goes here...
+  let sum = 2;
+  getPromise(120)
+    .then((resolve) => sum += resolve)
+  sum += 8;
+
+  return sum;
   
 }
+
+// const getPromise2 = (arg) => {
+//   // Your code goes here...
+//   if (typeof(arg) !== number) {
+//     return 0;
+
+//   } else {
+
+//     const promise = new Promise((resolve, reject) => resolve(arg));
+
+//     promise.then((data) => {
+//       console.log(data);
+//       return data;
+//     }, (reason) => reason);
+
+//     return promise;    
+//   }
+// };
+
 
 
 

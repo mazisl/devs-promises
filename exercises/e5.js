@@ -8,9 +8,13 @@
  *          export const Promise 
 */
 
-export const attachTitle = () => {
+export const attachTitle = (arg) => {
   // Your code goes here...
+  return `DR. ${arg}`;
 }
+
+// const title = 'DR.'
+// attachTitle(title);
 
 /**
  * @task
@@ -22,10 +26,20 @@ export const attachTitle = () => {
 
 export const getPromise = () => {
   // Your code goes here...
+  return new Promise((resolve, reject) => {
+    resolve('MANHATTAN')
+  })
+  .then((respVal) => {
+    // const title = 'DR.'
+    return attachTitle(respVal);
+  })
+  .then(data => console.log(data))
+  .catch(err => err);
 
-} 
+}
 
-
+// getPromise()
+  
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-5"

@@ -15,7 +15,20 @@
  */
 
 // Your code goes here
+export const getPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('The PROMISE was RESOLVED')
+  }, 1000)
+});
 
+const onFulfilled = ((data) => {
+  console.log(data);
+  return data;
+})
+const onRejected = (reason) => reason;
+
+getPromise
+    .then(onFulfilled, onRejected)
 
 
 // === TEST YOURSELF ===

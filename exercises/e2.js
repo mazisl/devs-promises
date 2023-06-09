@@ -15,9 +15,27 @@
  * Example: export const getPromise = (bool) = return <Your promise constructor code>
  */
 
-export const getPromise = () => {
+export const getPromise = (bool) => {
   // Your code goes here...
+  return new Promise((resolve, reject) => {
+    if (bool) {
+      resolve('The PROMISE was RESOLVED')
+    } else {
+      reject('The PROMISE was REJECTED')
+    }
+  })
 };
+
+// const onFulfilled = ((data) => {
+//   console.log(data);
+//   return data;
+// })
+// const onRejected = (reason) => reason;
+
+// getPromise
+//     .then(onFulfilled, onRejected)
+// console.log(getPromise(true))
+// console.log(getPromise(false))
 
 /**
  * Create a handlePromise function that follows:
@@ -28,10 +46,27 @@ export const getPromise = () => {
  * The handlePromise() function must be exported
  */
 
-export const handlePromise = () => {
+export const handlePromise = (prom) => {
   // Your code goes here...
+  const onFulfilled = ((data) => {
+    console.log(data);
+    return data;
+  })
+
+  const onRejected = ((reason) => {
+    console.log(reason);
+    return 'Uh Oh';
+  })
+
+  return prom.then(onFulfilled, onRejected)
 };
 
+const newPromise = new Promise((resolve, reject) => {
+  resolve('The PROMISE was RESOLVED')
+  reject('The PROMISE was REJECTED')
+})
+
+handlePromise(newPromise)
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-2"
 // If the test has all tests passed, switch to the next exercise file
